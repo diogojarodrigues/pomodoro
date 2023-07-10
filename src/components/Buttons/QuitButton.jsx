@@ -5,6 +5,6 @@ import style from "../../assets/styles/settings.module.css"
 
 export default function Quit() {
     return (
-        <a href="/pomodoro" className={style.quitButton}><FontAwesomeIcon icon={faXmark}/></a>
+        <a href="/" className={style.quitButton}><FontAwesomeIcon icon={faXmark}/></a>
     )
 }

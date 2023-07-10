@@ -5,7 +5,7 @@ import style from "../../assets/styles/home.module.css"
 
 export default function Options() {
     return (
-        <a href="/pomodoro/settings" className={style.settingsButton}><FontAwesomeIcon icon={faGear} /></a>
+        <a href="/settings" className={style.settingsButton}><FontAwesomeIcon icon={faGear} /></a>
     )
 }
 

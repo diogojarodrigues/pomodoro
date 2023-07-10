@@ -13,6 +13,6 @@ export default function Save(props) {
 	}
 
     return (
-        <a href="/pomodoro" ><button onClick={handleSave} className={style.saveButton}>Save</button></a>
+        <a href="/" ><button onClick={handleSave} className={style.saveButton}>Save</button></a>
     )
 }

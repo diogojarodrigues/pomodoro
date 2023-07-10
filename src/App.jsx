@@ -9,8 +9,8 @@ function App() {
 
 	return (
 		<Routes>
-			<Route path="/pomodoro" element={<Home />} />
-			<Route path="/pomodoro/settings" element={<Settings />} />		
+			<Route path="/" element={<Home />} />
+			<Route path="/settings" element={<Settings />} />		
 		</Routes>
 	);
 	

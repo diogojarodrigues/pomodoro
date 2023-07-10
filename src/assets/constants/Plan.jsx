@@ -81,9 +81,9 @@ class Plan {
 const standardPlan = new Plan("standard", 25, 5, 30, 4, true);
 const recommendedPlan = new Plan("recommended", 52, 17, 30, 2, true);
 
-const basePlan = new Plan("general", 25, 5, 30, 4);
-const testPlan = new Plan("general", 0.1, 0.2, 0.3, 5);
-const fastPlan = new Plan("general", 0.03, 0.05, 0.07, 3);
+const basePlan = new Plan("default", 25, 5, 30, 4);
+const testPlan = new Plan("default", 0.1, 0.2, 0.3, 5);
+const fastPlan = new Plan("default", 0.03, 0.05, 0.07, 3);
 
 
 export { Plan, standardPlan, recommendedPlan }
