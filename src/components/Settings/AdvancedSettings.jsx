@@ -8,7 +8,7 @@ export default function AdvancedSettings() {
 	const { getAdvancedSettings, changeSelectedPage, newSettings, changeSelectedPlan, changeSettings, showPlansBar, getAllPlans, setNewSettings } = useContext(NewSettingsContext);
 
   	const turnAdvancePlansOn = () => {
-		if (window.confirm("Are you sure, that you want to activate the advanced plan customization?\nYou can always revert this option later")) {
+		if (window.confirm("Are you sure, that you want add multiple plans?\nYou can always revert this option later")) {
 			
 			if (getAllPlans().length === 0) {
 				setNewSettings({
@@ -30,10 +30,14 @@ export default function AdvancedSettings() {
 
   	const turnAdvancePlansOff = () => {
 		window.alert(
-			"Plans advanced options were disabled!\nDon't worry, your plans are safe\nYou can access them again by clicking on \"Advance plans customization?\""
+			"Multiple plans were disabled!\nDon't worry, your plans are safe\nYou can access them again by clicking on \"Add multiple plans?\""
 		);
 
-		changeSettings("advancedSettings");
+		setNewSettings(prev => ({
+			...prev,
+			"advancedSettings": false,
+			"hidePlansBar": true,
+		}))
 		changeSelectedPage("default");
 		changeSelectedPlan("mainPlan");
  	};

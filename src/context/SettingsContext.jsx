@@ -25,6 +25,8 @@ const defaultSettings = {
 const SettingsContextProvider = (props) => {
 	const [settings, setSettings] = useState(loadSettings())
 
+	console.log(settings)
+
 	function loadSettings() {
 		const storedSettings = JSON.parse(localStorage.getItem("MY_POMODORO_APP_SETTINGS"))
 		

@@ -18,9 +18,10 @@ const PomodoroContextProvider = (props) => {
 
 	useEffect(() => {
 		if (settings.refresh) {
-			setPomodoro(inicialPomodoroValues)
 			setIsPlaying(true)
 			setIsInSession(false)
+			setActivePlan(settings.activePlan)
+			setPomodoro(inicialPomodoroValues)
 		}
 	}, [settings])
 
