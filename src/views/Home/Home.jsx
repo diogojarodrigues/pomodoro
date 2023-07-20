@@ -1,4 +1,6 @@
 import { useContext, useState, useEffect, useRef } from "react"
+import { useMediaQuery } from 'react-responsive';
+
 
 import { PomodoroContext } from "../../context/PomodoroContext"
 import { SettingsContext } from "../../context/SettingsContext"
@@ -16,6 +18,7 @@ export default function Home() {
 	const { settings } = useContext(SettingsContext)
 
 	const soundref = useRef(new Audio(backgroundSound))
+	const isMobile = useMediaQuery({maxWidth: 767})
 
 	function playSound() {
 		const sound = soundref.current
@@ -36,8 +39,8 @@ export default function Home() {
 		<div>
 			{isInSession ? <Session /> : <Play />}
 			{isInSession && <State /> }
-			<SettingsButton />
-			{!settings.hidePlansBar && !isInSession && <PlanBarHome />}
+			{!isMobile && <SettingsButton />}
+			{!settings.hidePlansBar && !isInSession && !isMobile && <PlanBarHome />}
 		</div>
 	)
 }

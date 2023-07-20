@@ -1,6 +1,6 @@
 /* Settings */
 .blurBackground {
-	backdrop-filter: blur(5px);
+	backdrop-filter: blur(0.313rem);
 }
 
 .outerContainer {
@@ -9,9 +9,9 @@
     color: var(--settings-main-color);
     font-size: larger;
     
-    border-radius: 15px;
-    width: 1000px;
-    height: 800px;
+    border-radius: 10.313rem;
+    width: 62.5rem;
+    height: 50rem;
 
     position: relative;
     display: flex;
@@ -26,7 +26,7 @@
     flex-direction: row;
     align-items: center;
 
-    height: 500px;
+    height: 31.25rem;
     width: 80%;
 }
 
@@ -42,12 +42,12 @@
 
 /* Sections Settings */
 .section {
-    margin-top: 50px;
-    width: 450px;
+    margin-top: 3.125rem;
+    width: 28.125rem;
 }
 
 .maxSession {
-    margin-top: 25px;
+    margin-top: 1.563rem;
 }
 
 .change_name {
@@ -57,18 +57,18 @@
 }
 
 .change_name input {
-    width: 250px;
-    height: 25px;
-    border-radius: 5px;
-    border: 1px solid var(--settings-main-color);
-    padding: 5px;
-    margin-right: 30px;
-    font-size: 18px;
+    width: 15.625rem;
+    height: 1.563rem;
+    border-radius: 0.313rem;
+    border: 0.063rem solid var(--settings-main-color);
+    padding: 0.313rem;
+    margin-right: 1.875rem;
+    font-size: 1.125rem;
 }
 
 .icon {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     cursor: pointer;
 }
 
@@ -77,13 +77,13 @@
 }
 
 .editIcon {
-    width: 25px;height: 25px;
-
+    width: 1.563rem;
+    height: 1.563rem;
 }
 
 .changeIcon {
     color: green;
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 
 .cancelIcon {
@@ -93,8 +93,8 @@
 
 /* Advanced Settings */
 .advancedContainer {
-    margin-top: 100px;
-    margin-bottom: 250px;
+    margin-top: 6.25rem;
+    margin-bottom: 15.625rem;
     cursor: pointer;
 }
 
@@ -127,20 +127,20 @@
 
 /* Side Bar */
 .sideBar {
-    max-height: 500px;
+    max-height: 31.25rem;
     width: 25%;
     height: 100%;
 
-    border-right: 3px solid var(--settings-main-color);
+    border-right: 0.188rem solid var(--settings-main-color);
 }
 
 .sideBarTitle {
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
 }
 
 .sideBarPage {
     cursor: pointer;
-    margin: 10px 0px;
+    margin: 0.625rem 0rem;
     text-transform: lowercase;
 }
 
@@ -153,15 +153,15 @@
 }
 
 .sideBarMainPlan {
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .sideBarAllPlans {
-    margin-bottom: 25px;
+    margin-bottom: 1.563rem;
 }
 
 .sideBarCreatePlan {
-    margin-top:20px;   
+    margin-top:1.25rem;   
 }
 
 .sideBarPageSelected {
@@ -176,11 +176,11 @@
     align-items: center;
     justify-content: space-between;
     width: 85%;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .durationContainer * {
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 .durationTimer {
@@ -192,15 +192,15 @@
 }
 
 .durationTimer p {
-    font-size: 22px;
+    font-size: 1.375rem;
 }
 
 .durationTimer input {
     border-radius: 50%;
-    width: 90px;
-    height: 90px;
+    width: 5.625rem;
+    height: 5.625rem;
     background-color:   #ffffff  ;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     color: var(--settings-main-color);
 
@@ -209,17 +209,17 @@
 /* Quit Button */
 .quitButton {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 2.5rem;
+    left: 2.5rem;
 
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 40px;
+    font-size: 2.5rem;
 
     color: var(--settings-main-color);
 }
@@ -231,14 +231,14 @@
 /* Save Button */
 .saveButton {
     position: absolute;
-    bottom: 40px;
-    right: 50px;
+    bottom: 2.5rem;
+    right: 3.125rem;
 
-    padding: 10px 20px;
+    padding: 0.625rem 1.25rem;
     background-color: var(--settings-main-color);
     color: #fff;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 1rem;
+    border-radius: 0.625rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     border: none;
@@ -269,17 +269,17 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 
 .overlay {
     display: flex;
     flex-direction: row;
-    width: 380px;
-    border-radius: 10px;
-    border: black solid 1px;
-    padding: 10px;
+    width: 23.75rem;
+    border-radius: 0.625rem;
+    border: black solid 0.063rem;
+    padding: 0.625rem;
     justify-content: space-between;
 }
 
@@ -297,19 +297,19 @@
 }
 
 .arrowIcon {
-    width: 20px;
-    height: 25px;
+    width: 1.25rem;
+    height: 1.563rem;
 }
 
 .manageIcon {
-    width: 25px;
-    height: 25px;
+    width: 1.563rem;
+    height: 1.563rem;
     cursor: pointer;
 }
 
 .deleteIcon {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .deleteIcon:hover {

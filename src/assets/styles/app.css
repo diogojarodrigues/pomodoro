@@ -31,12 +31,12 @@ body {
 .input {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .input input {
-    height: 20px;
-    width: 50px;
+    height: 1.25rem;
+    width: 3.125rem;
 }
 
 .input input {

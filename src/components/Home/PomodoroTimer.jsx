@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useMediaQuery } from 'react-responsive';
+
 import style from "../../assets/styles/home.module.css"
 
 import { PomodoroContext } from '../../context/PomodoroContext'
@@ -9,7 +11,8 @@ import {faPlay, faPause} from '@fortawesome/free-solid-svg-icons'
 
 const PomodoroTimer = () => {
 	const { isPlaying, pomodoro, nextPomodoro, playPausePomodoro, sendNotification } = useContext(PomodoroContext)
-	
+	const isMobile = useMediaQuery({maxWidth: 767})
+
 	const [isHovering, setIsHovering] = useState(false)
 	const [colors, setColors] = useState(pomodoro.colors)
 	const [duration, setDuration] = useState(pomodoro.duration * 60)
@@ -24,6 +27,17 @@ const PomodoroTimer = () => {
 	function handleMouseEnter() { setIsHovering(true) }
 	function handleMouseLeave() { setIsHovering(false) }
 	function handleMouseOnClick() { playPausePomodoro() }
+	function handleMobileClick() { 
+		playPausePomodoro() 
+		
+		setIsHovering(true)
+
+		setTimeout(() => {
+			setIsHovering(false);
+			}, 1000);
+
+	}
+
 
 	const handleOnComplete = () => {
 		sendNotification() 
@@ -31,6 +45,14 @@ const PomodoroTimer = () => {
 	}	
 
 	const children = ({ remainingTime }) => {
+		if (isMobile && isHovering) {
+			if (!isPlaying) {
+				return <FontAwesomeIcon style={{transition: "transform 0.3s ease"}} icon={faPause} className={style.timerClockIcon}/>
+			} else {
+				return <FontAwesomeIcon style={{transition: "transform 0.3s ease"}} icon={faPlay} className={style.timerClockIcon}/>
+			}
+		}
+
 		if (isHovering) {
 			if (isPlaying) {
 				return <FontAwesomeIcon icon={faPause} className={style.timerClockIcon}/>
@@ -47,13 +69,8 @@ const PomodoroTimer = () => {
 		return <p className={hours>0 ? style.timerClockSmallText : style.timerClockBigText }>{`${hours > 0 ? hours + ':' : ''}${minutes}:${seconds}`}</p>;
 	}
 
-	return (
-		<div className={style.timerClock}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-			onClick={handleMouseOnClick}
-		>
-
+	const Timer = () => {
+		return (
 			<CountdownCircleTimer
 				key={key}
 				isPlaying={isPlaying}
@@ -68,8 +85,31 @@ const PomodoroTimer = () => {
 			>
 				{children}
 			</CountdownCircleTimer>
+		)
+	}
 
-		</div>
+
+	return (
+		<>
+			{ isMobile ? (
+				<div 
+					onClick={handleMobileClick}
+					style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+				>
+				{Timer()}
+			  </div>
+			  
+			) : (
+				<div className={style.timerClock}
+					onMouseEnter={handleMouseEnter}
+					onMouseLeave={handleMouseLeave}
+					onClick={handleMouseOnClick}
+				>
+					{Timer()}
+				</div>
+			)
+			}
+		</>
 	)
 }
 
