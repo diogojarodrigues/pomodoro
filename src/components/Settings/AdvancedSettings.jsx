@@ -5,7 +5,7 @@ import { NewSettingsContext } from "../../context/NewSettingsContext";
 import { standardPlan, recommendedPlan } from "../../assets/constants/Plan";
 
 export default function AdvancedSettings() {
-	const { getAdvancedSettings, changeSelectedPage, newSettings, changeSelectedPlan, changeSettings, showPlansBar, getAllPlans, setNewSettings } = useContext(NewSettingsContext);
+	const { getAdvancedSettings, changeSelectedPage, newSettings, changeSelectedPlan, changeSettings, setRefreshTrue, getAllPlans, setNewSettings } = useContext(NewSettingsContext);
 
   	const turnAdvancePlansOn = () => {
 		if (window.confirm("Are you sure, that you want add multiple plans?\nYou can always revert this option later")) {
@@ -37,9 +37,11 @@ export default function AdvancedSettings() {
 			...prev,
 			"advancedSettings": false,
 			"hidePlansBar": true,
+			"activePlan": "default"
 		}))
 		changeSelectedPage("default");
 		changeSelectedPlan("mainPlan");
+		setRefreshTrue();
  	};
 
   	return (

@@ -45,26 +45,23 @@ const PomodoroTimer = () => {
 	}	
 
 	const children = ({ remainingTime }) => {
-		if (isMobile && isHovering) {
-			if (!isPlaying) {
-				return <FontAwesomeIcon style={{transition: "transform 0.3s ease"}} icon={faPause} className={style.timerClockIcon}/>
-			} else {
-				return <FontAwesomeIcon style={{transition: "transform 0.3s ease"}} icon={faPlay} className={style.timerClockIcon}/>
-			}
-		}
 
-		if (isHovering) {
-			if (isPlaying) {
-				return <FontAwesomeIcon icon={faPause} className={style.timerClockIcon}/>
-			} else {
-				return <FontAwesomeIcon icon={faPlay} className={style.timerClockIcon}/>
-			}
-		}
-
-		
 		const hours = Math.floor(remainingTime / 3600).toString().padStart(2, '0')
 		const minutes = Math.floor(remainingTime / 60 % 60).toString().padStart(2, '0')
 		const seconds = (remainingTime % 60).toString().padStart(2, '0')
+
+		document.title = `${hours > 0 ? `${hours}:` : ""}${minutes}:${seconds} - Pomodoro`;
+		
+		if (isHovering) {
+
+			if (isMobile)
+				return <FontAwesomeIcon icon={!isPlaying ? faPause : faPlay} className={style.timerClockIcon}/>
+
+			return <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} className={style.timerClockIcon}/>
+			
+		}
+		
+		
 
 		return <p className={hours>0 ? style.timerClockSmallText : style.timerClockBigText }>{`${hours > 0 ? hours + ':' : ''}${minutes}:${seconds}`}</p>;
 	}

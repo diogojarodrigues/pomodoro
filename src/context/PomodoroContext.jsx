@@ -12,9 +12,17 @@ const PomodoroContextProvider = (props) => {
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [pomodoro, setPomodoro] = useState(inicialPomodoroValues)	
 
+	if (!isInSession) {
+		document.title = `Pomodoro`
+	}
+
 	useEffect(() => {
 		setPomodoro(inicialPomodoroValues)
+		console.log("A")
 	}, [activePlan])
+
+	console.log("PomodoroContextProvider: ", pomodoro)
+	console.log(activePlan, isInSession, isPlaying)
 
 	useEffect(() => {
 		if (settings.refresh) {
@@ -22,19 +30,26 @@ const PomodoroContextProvider = (props) => {
 			setIsInSession(false)
 			setActivePlan(settings.activePlan)
 			setPomodoro(inicialPomodoroValues)
+			console.log("B")
 		}
+
+		console.log("C")
 	}, [settings])
 
 	function inicialPomodoroValues() {
 		const active_plan = getPlanByName(activePlan)
 
-		return ({
+		const pomodoro = {
 			count: 1,
 			active: "work",
 			duration: active_plan.work,
 			plan: active_plan,
 			colors: [...settings.colors.work],
-		})
+		}
+
+		console.log("inicialPomodoroValues", pomodoro)
+
+		return pomodoro
 	}
 
 	//Load state of session from local storage

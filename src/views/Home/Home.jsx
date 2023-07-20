@@ -33,8 +33,6 @@ export default function Home() {
 
 	playSound()
 
-	console.log("Settings: ", settings)
-
 	return (
 		<div>
 			{isInSession ? <Session /> : <Play />}

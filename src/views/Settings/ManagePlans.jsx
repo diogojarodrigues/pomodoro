@@ -21,8 +21,6 @@ const sortPlans = (plans, activePlanName) => {
     const selectedPlans = plans.filter((plan) => plan.isSelected && plan.name !== activePlanName).sort(sortFunction);
     const unselectedPlans = plans.filter((plan) => !plan.isSelected && plan.name !== activePlanName).sort(sortFunction);
 
-    console.log("sortPlans", plans, activePlanName, activePlan, selectedPlans, unselectedPlans)
-
     return {
         "activePlan": activePlan,
         "selectedPlans": selectedPlans,
@@ -48,8 +46,6 @@ export default function ManagePlans() {
 
     function htmlPlan(plan) {
     
-        console.log(plan)
-
         const handleSelectPlan = () => { changeAllPlans(plan.toggleSelected()); }
         const handleDeletePlan = () => { deletePlan(plan.name); }
         const makeActivePlan = () => {

@@ -50,6 +50,7 @@ const SettingsContextProvider = (props) => {
 	//Save settings in local storage
 	useEffect(() => {
 		console.log("Settings saved in local storage")
+		console.log(settings)
 		localStorage.setItem("MY_POMODORO_APP_SETTINGS", JSON.stringify(settings))
 	}, [settings])
 	
