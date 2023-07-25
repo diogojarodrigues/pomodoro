@@ -25,8 +25,6 @@ const defaultSettings = {
 const SettingsContextProvider = (props) => {
 	const [settings, setSettings] = useState(loadSettings())
 
-	console.log(settings)
-
 	function loadSettings() {
 		const storedSettings = JSON.parse(localStorage.getItem("MY_POMODORO_APP_SETTINGS"))
 		
@@ -50,7 +48,6 @@ const SettingsContextProvider = (props) => {
 	//Save settings in local storage
 	useEffect(() => {
 		console.log("Settings saved in local storage")
-		console.log(settings)
 		localStorage.setItem("MY_POMODORO_APP_SETTINGS", JSON.stringify(settings))
 	}, [settings])
 	

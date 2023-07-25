@@ -50,8 +50,14 @@ const PomodoroTimer = () => {
 		const minutes = Math.floor(remainingTime / 60 % 60).toString().padStart(2, '0')
 		const seconds = (remainingTime % 60).toString().padStart(2, '0')
 
-		document.title = `${hours > 0 ? `${hours}:` : ""}${minutes}:${seconds} - Pomodoro`;
-		
+		const updateTitle = () => {
+			document.title = `${hours > 0 ? `${hours}:` : ""}${minutes}:${seconds} - Pomodoro`;
+		}
+		window.requestAnimationFrame(updateTitle);
+
+		//document.title = `${hours > 0 ? `${hours}:` : ""}${minutes}:${seconds} - Pomodoro`;
+		// console.log("");
+
 		if (isHovering) {
 
 			if (isMobile)

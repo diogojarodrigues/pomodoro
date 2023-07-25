@@ -18,11 +18,7 @@ const PomodoroContextProvider = (props) => {
 
 	useEffect(() => {
 		setPomodoro(inicialPomodoroValues)
-		console.log("A")
 	}, [activePlan])
-
-	console.log("PomodoroContextProvider: ", pomodoro)
-	console.log(activePlan, isInSession, isPlaying)
 
 	useEffect(() => {
 		if (settings.refresh) {
@@ -30,10 +26,7 @@ const PomodoroContextProvider = (props) => {
 			setIsInSession(false)
 			setActivePlan(settings.activePlan)
 			setPomodoro(inicialPomodoroValues)
-			console.log("B")
 		}
-
-		console.log("C")
 	}, [settings])
 
 	function inicialPomodoroValues() {
@@ -46,8 +39,6 @@ const PomodoroContextProvider = (props) => {
 			plan: active_plan,
 			colors: [...settings.colors.work],
 		}
-
-		console.log("inicialPomodoroValues", pomodoro)
 
 		return pomodoro
 	}
@@ -89,33 +80,32 @@ const PomodoroContextProvider = (props) => {
 	}
 
 	const sendNotification = () => {
-		//const { Notify } = Window;
+		playSound();
 
-		/**
-		if (!Notify) {
-			console.error('Desktop notifications not available in your browser.');
+		if (!("Notification" in window)) {
+			console.log("This browser does not support system notifications");
 			return;
 		}
-		 */
-
+	
+		// Request permission to show notifications
+		if (Notification.permission !== "granted") {
+			Notification.requestPermission();
+		}
+	
 		let body;
 
-		if ( pomodoro.count === 2 * settings.max - 1) {		//Fim da sessão
-			body = "Great job, You're now one step closer to achieve your goals!"
-		} else if ( pomodoro.count % 2 === 1 ) {			//Fim do trabalho
-			body = "Well done! You deserve a break after all that hard work!"
-		} else {											//Fim da pausa
-			body = "It's time to focus on your goals and push forward!"
+		if (pomodoro.count === 2 * pomodoro.plan.max - 1 ) {//Long Break
+			body = "Well done! You deserve a break after all that hard work!";
+		} else if (pomodoro.count % 2 === 1) {				//Short Break
+			body = "Great job, You're now one step closer to achieve your goals!";
+		} else if (pomodoro.count === 2 * pomodoro.plan.max) {
+			return
+		} else {											//Work
+			body = "It's time to focus on your goals and push forward!";
 		}
-		/*
-		const notification = new Notify("Pomodoro Session Over", {
-			body: body,
-			//icon: "path/to/icon.png" // optional
-		});
-		*/
-		
-		//notification.show();
-		playSound();
+	
+		// Create the notification
+		const notification = new Notification("Pomodoro Pulse", { body, icon: "src/assets/images/pomodoroLogo.png", image: "src/assets/images/pomodoroLogo.png" });
 	}
 
 	const nextPomodoro = (back=false) => {
