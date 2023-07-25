@@ -117,7 +117,7 @@ const PomodoroContextProvider = (props) => {
 		}
 	
 		// Create the notification
-		const notification = new Notification("Pomodoro Pulse", { body, icon: "src/assets/images/pomodoroLogo.png", image: "src/assets/images/pomodoroLogo.png" });
+		const notification = new Notification("Pomodoro Pulse", { body, icon: "src/assets/images/pomodoroLogo.png" });
 	}
 
 	const nextPomodoro = (back=false) => {

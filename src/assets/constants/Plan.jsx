@@ -87,4 +87,4 @@ const fastPlan = new Plan("default", 0.03, 0.05, 0.07, 3);
 
 
 export { Plan, standardPlan, recommendedPlan }
-export default basePlan;
+export default fastPlan;
