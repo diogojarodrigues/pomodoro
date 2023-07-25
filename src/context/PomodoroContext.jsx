@@ -62,7 +62,19 @@ const PomodoroContextProvider = (props) => {
 		}))
 	}, [pomodoro, isPlaying, isInSession])
 
-	function startSession() { setIsInSession(true) }
+	function startSession() {
+		if (!("Notification" in window)) {
+			console.log("This browser does not support system notifications");
+			return;
+		}
+	
+		// Request permission to show notifications
+		if (Notification.permission !== "granted") {
+			Notification.requestPermission();
+		}
+		
+		setIsInSession(true) 
+	}
 	function finishSession() { setIsInSession(false) }
 	function playPausePomodoro() { setIsPlaying(!isPlaying) }
 
