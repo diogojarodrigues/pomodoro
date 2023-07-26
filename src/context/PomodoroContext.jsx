@@ -12,9 +12,12 @@ const PomodoroContextProvider = (props) => {
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [pomodoro, setPomodoro] = useState(inicialPomodoroValues)	
 
-	if (!isInSession) {
-		document.title = `Pomodoro`
-	}
+	useEffect(() => {
+		if (!isInSession) {
+			document.title = `Pomodoro`
+		}
+	}, [isInSession])
+	
 
 	useEffect(() => {
 		setPomodoro(inicialPomodoroValues)
