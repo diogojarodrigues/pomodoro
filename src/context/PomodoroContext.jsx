@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
+import React, { createContext, useContext, useEffect, useRef, useState } from "react"
 import { SettingsContext } from "./SettingsContext"
 import notificationSound from "../assets/sounds/NotificationSound/Ship Bell.mp3"
 
@@ -11,6 +11,8 @@ const PomodoroContextProvider = (props) => {
 	const [isInSession, setIsInSession] = useState(false)
 	const [isPlaying, setIsPlaying] = useState(true)
 	const [pomodoro, setPomodoro] = useState(inicialPomodoroValues)	
+
+	const aux = useRef(0)
 
 	useEffect(() => {
 		if (!isInSession) {
@@ -200,6 +202,10 @@ const PomodoroContextProvider = (props) => {
 			return
 		}
 
+		if (timeLeft === aux.current && pomodoro.timeLeft === pomodoro.duration) 
+			return
+
+		aux.current = timeLeft
 		setPomodoro(prev => (
 			{...prev, "timeLeft": timeLeft})
 		)
