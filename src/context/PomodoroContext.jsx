@@ -57,13 +57,15 @@ const PomodoroContextProvider = (props) => {
 	}, [])
 
 	//Save state of session in local storage
-	useEffect(() => {
+	function save() {
 		localStorage.setItem("MY_POMODORO_APP_STATE", JSON.stringify({
 			isInSession: isInSession,
 			isPlaying: isPlaying,
 			pomodoro: pomodoro
 		}))
-	}, [pomodoro, isPlaying, isInSession])
+	}
+	
+	window.addEventListener('beforeunload', save);
 
 	function startSession() {
 		if (!("Notification" in window)) {
