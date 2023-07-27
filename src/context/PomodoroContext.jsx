@@ -19,10 +19,12 @@ const PomodoroContextProvider = (props) => {
 	}, [isInSession])
 	
 
+	//When clicled on the plans bar, change the actual pomodoro plan to the selected one
 	useEffect(() => {
 		setPomodoro(inicialPomodoroValues)
 	}, [activePlan])
 
+	//When the settings are changed, reset the pomodoro
 	useEffect(() => {
 		if (settings.refresh) {
 			setIsPlaying(true)
@@ -38,7 +40,8 @@ const PomodoroContextProvider = (props) => {
 		const pomodoro = {
 			count: 1,
 			active: "work",
-			duration: active_plan.work,
+			duration: active_plan.work * 60,
+			timeLeft: active_plan.work * 60,
 			plan: active_plan,
 			colors: [...settings.colors.work],
 		}
@@ -61,10 +64,10 @@ const PomodoroContextProvider = (props) => {
 		localStorage.setItem("MY_POMODORO_APP_STATE", JSON.stringify({
 			isInSession: isInSession,
 			isPlaying: isPlaying,
-			pomodoro: pomodoro
+			pomodoro: pomodoro,
 		}))
+
 	}
-	
 	window.addEventListener('beforeunload', save);
 
 	function startSession() {
@@ -168,7 +171,8 @@ const PomodoroContextProvider = (props) => {
 		setPomodoro({
 			count: count,
 			active: auxActive,
-			duration: auxTime,
+			duration: auxTime * 60,
+			timeLeft: auxTime * 60,
 			plan: pomodoro.plan,
 			colors: auxColors,
 		})
@@ -188,10 +192,23 @@ const PomodoroContextProvider = (props) => {
 		setIsInSession(false)
 	}
 
+	const updateTimeLeft = (timeLeft) => {
+		if (pomodoro.timeLeft === timeLeft)
+			return
+
+		if (timeLeft === 0) {
+			return
+		}
+
+		setPomodoro(prev => (
+			{...prev, "timeLeft": timeLeft})
+		)
+	}
+
 	const providerValue = {
 		pomodoro, isPlaying, isInSession, activePlan, setActivePlan,
 		playPausePomodoro, nextPomodoro, sendNotification,
-		startSession, finishSession,
+		startSession, finishSession, updateTimeLeft,
 		home, next, previus,
 	}
 

@@ -73,8 +73,6 @@ export default function AlternativePlan() {
         setSaved(true)
     }
 
-    //tens de ver dar update ao nome nas settings tenta com changeSellectedPlan
-
     return (
         <div className={style.planContainer}>
             <TimerSettings changePlan={changeAllPlans}/>
