@@ -9,7 +9,7 @@ import SettingsButton from "../../components/Buttons/SettingsButton"
 import Session from "./Session"
 import Play from "./Play"
 import PlanBarHome from "../../components/Home/PlanBarHome"
-import State from "../../components/Home/State"
+import SessionDetails from "../../components/Home/SessionDetails"
 
 import backgroundSound from "../../assets/sounds/BackgroundSound/Daytime Forrest Bonfire.mp3"
 
@@ -36,7 +36,7 @@ export default function Home() {
 	return (
 		<div>
 			{isInSession ? <Session /> : <Play />}
-			{isInSession && <State /> }
+			{isInSession && <SessionDetails /> }
 			{!isMobile && <SettingsButton />}
 			{!settings.hidePlansBar && !isInSession && !isMobile && <PlanBarHome />}
 		</div>

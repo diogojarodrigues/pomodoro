@@ -83,6 +83,7 @@ const PomodoroContextProvider = (props) => {
 			Notification.requestPermission();
 		}
 		
+		setIsPlaying(true)
 		setIsInSession(true) 
 	}
 	function finishSession() { setIsInSession(false) }
